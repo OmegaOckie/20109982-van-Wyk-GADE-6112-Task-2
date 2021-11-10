@@ -17,9 +17,11 @@ namespace _20109982_van_Wyk_POE
         /// </summary>
         /// <param name="goblinX"></param>
         /// <param name="goblinY"></param>
-        public Goblin(int goblinX, int goblinY) : base (goblinX, goblinY, 1, 10, 10, 'G')
+        public Goblin(int goblinX, int goblinY) : base (goblinX, goblinY, 1, 10, 'G')
         {
-
+            x = goblinX;
+            y = goblinY;
+            HP = 10;
         }
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace _20109982_van_Wyk_POE
                 case 1:
                     if (characterVision[0] == null)
                     {
-                        return Movement.UP;
+                        move = Movement.UP;
                     }
                     else
                     {
@@ -49,7 +51,7 @@ namespace _20109982_van_Wyk_POE
                 case 2:
                     if (characterVision[1] == null)
                     {
-                        return Movement.DOWN;
+                        move = Movement.DOWN;
                     }
                     else
                     {
@@ -59,7 +61,7 @@ namespace _20109982_van_Wyk_POE
                 case 3:
                     if (characterVision[2] == null)
                     {
-                        return Movement.LEFT;
+                        move = Movement.LEFT;
                     }
                     else
                     {
@@ -69,7 +71,7 @@ namespace _20109982_van_Wyk_POE
                 case 4:
                     if (characterVision[3] == null)
                     {
-                        return Movement.RIGHT;
+                        move = Movement.RIGHT;
                     }
                     else
                     {
@@ -77,8 +79,9 @@ namespace _20109982_van_Wyk_POE
                     }
                     break;
                 default:
-                    return Movement.NONE;
+                    return  Movement.NONE;
             }
+            return move;
         }
     }
 }

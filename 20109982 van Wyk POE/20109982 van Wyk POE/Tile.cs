@@ -9,8 +9,11 @@ namespace _20109982_van_Wyk_POE
     abstract class Tile
     {
         //Q.2.1 Defining the Variables
-        protected int x { get; set; }
-        protected int y { get; set; }
+        protected int x;
+        protected int y;
+
+        public int xCoordinate { get => x; set => x = value; }
+        public int yCoordinate { get => x; set => x = value; }
 
         public enum TileType
         {

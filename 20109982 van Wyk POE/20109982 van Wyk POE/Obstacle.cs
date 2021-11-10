@@ -10,8 +10,7 @@ namespace _20109982_van_Wyk_POE
     {
         public Obstacle(int obstacleX, int obstacleY) : base ( obstacleX, obstacleY)
         {
-            x = obstacleX;
-            y = obstacleY;
+
         }
     }
 }

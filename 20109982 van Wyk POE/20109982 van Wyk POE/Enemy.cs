@@ -24,11 +24,12 @@ namespace _20109982_van_Wyk_POE
         /// <param name="enemyStartingHP"></param>
         /// <param name="enemyMaxHP"></param>
         /// <param name="enemySymbol"></param>
-        public Enemy (int enemyX, int enemyY, int enemyDamage,int enemyStartingHP, int enemyMaxHP, char enemySymbol) : base (enemyX, enemyY, 'E')
+        public Enemy (int enemyX, int enemyY, int enemyDamage,int enemyStartingHP, char enemySymbol) : base (enemyX, enemyY, 'E')
         {
+            x = enemyX;
+            y = enemyY;
             Damage = enemyDamage;
-            HP = enemyStartingHP;
-            MaxHP = enemyMaxHP;
+            MaxHP = enemyStartingHP;
         }
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace _20109982_van_Wyk_POE
         /// <returns></returns>
         public override string ToString()
         {
-            return "$EnemyClassName at [{x}, {y}] ({Damage})";
+            return "$EnemyClassName at [{x}, {y}] ({Damage})\n";
         }
     }
 }

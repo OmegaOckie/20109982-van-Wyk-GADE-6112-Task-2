@@ -14,7 +14,7 @@ namespace _20109982_van_Wyk_POE
         protected int MaxHP { get; set; }
         protected int Damage { get; set; }
 
-        protected Tile[] characterVision = new Tile[4];
+        protected Tile[] characterVision;// = new Tile[4];
 
         public enum Movement
         {

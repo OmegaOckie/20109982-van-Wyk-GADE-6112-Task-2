@@ -38,6 +38,7 @@ namespace _20109982_van_Wyk_POE
             this.enemyTargeterComboBox = new System.Windows.Forms.ComboBox();
             this.attackButton = new System.Windows.Forms.Button();
             this.gameHistoryTextBox = new System.Windows.Forms.RichTextBox();
+            this.mapRichTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // playerStatsLabel
@@ -120,11 +121,20 @@ namespace _20109982_van_Wyk_POE
             this.gameHistoryTextBox.TabIndex = 8;
             this.gameHistoryTextBox.Text = "";
             // 
+            // mapRichTextBox
+            // 
+            this.mapRichTextBox.Location = new System.Drawing.Point(15, 43);
+            this.mapRichTextBox.Name = "mapRichTextBox";
+            this.mapRichTextBox.Size = new System.Drawing.Size(234, 337);
+            this.mapRichTextBox.TabIndex = 9;
+            this.mapRichTextBox.Text = "";
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mapRichTextBox);
             this.Controls.Add(this.gameHistoryTextBox);
             this.Controls.Add(this.attackButton);
             this.Controls.Add(this.enemyTargeterComboBox);
@@ -152,5 +162,6 @@ namespace _20109982_van_Wyk_POE
         private System.Windows.Forms.ComboBox enemyTargeterComboBox;
         private System.Windows.Forms.Button attackButton;
         private System.Windows.Forms.RichTextBox gameHistoryTextBox;
+        private System.Windows.Forms.RichTextBox mapRichTextBox;
     }
 }

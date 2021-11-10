@@ -10,8 +10,7 @@ namespace _20109982_van_Wyk_POE
     {
         public EmptyTile(int emptyTileX, int emptyTileY) : base(emptyTileX, emptyTileY)
         {
-            x = emptyTileX;
-            y = emptyTileY;
+
         }
     }
 }

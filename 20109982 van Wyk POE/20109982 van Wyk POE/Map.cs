@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace _20109982_van_Wyk_POE
 {
@@ -18,16 +19,16 @@ namespace _20109982_van_Wyk_POE
         protected int mapHeight { get; set; }
         protected Random rng { get; set; }
 
-        /// <summary>
-        /// Q.3.2 | A constructor that receives a minimum and maximum width, minimum and
-        /// maximum height and number of enemies.
-        /// </summary>
-        /// <param name="minWidth"></param>
-        /// <param name="maxWidth"></param>
-        /// <param name="minHeight"></param>
-        /// <param name="maxHeight"></param>
-        /// <param name="numOfEnemies"></param>
-        public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int numOfEnemies)
+            /// <summary>
+            /// Q.3.2 | A constructor that receives a minimum and maximum width, minimum and
+            /// maximum height and number of enemies.
+            /// </summary>
+            /// <param name="minWidth"></param>
+            /// <param name="maxWidth"></param>
+            /// <param name="minHeight"></param>
+            /// <param name="maxHeight"></param>
+            /// <param name="numOfEnemies"></param>
+            public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int numOfEnemies)
         {
             //Q.3.2 | The method randoms a height
             //and width for the map based on the minimum and maximum values
@@ -43,13 +44,13 @@ namespace _20109982_van_Wyk_POE
             enemyArray = new Enemy[numOfEnemies];
 
             //Q.3.2 | The constructor calls Create() to create the Hero
-            Create();
+            Create(Tile.TileType.HERO);
 
             //Q.3.2 | loops through the enemy’s array calling Create() to create each enemy and puts
             //them in the Tile map
             foreach (var enemy in enemyArray)
             {
-                Create();
+                Create(Tile.TileType.ENEMY);
             }
 
             //Q.3.2 | It then calls UpdateVision() which updates the vision
@@ -62,9 +63,51 @@ namespace _20109982_van_Wyk_POE
         /// hero and each enemy) by saving the character values of the map at the
         /// north, south, east and west position from the X and Y positions of the unit.
         /// </summary>
-        public void UpdateVision()
+        public void UpdateVision(RichTextBox rtb)
         {
-            
+
+
+            rtb.Text = "";
+            for (int i = 0; i < mapWidth; i++)
+            {
+                for (int o = 0; o < mapHeight; o++)
+                {
+                    if (i == myHero.xCoordinate + 1 && o == myHero.yCoordinate && enemyArray[i, o] != null)
+                    {
+                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                    }
+                    if (i == hero.X_coordinate - 1 && o == hero.Y_coordinate && enemeyArray[i, o] != null)
+                    {
+                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                    }
+                    if (i == hero.X_coordinate && o == hero.Y_coordinate + 1 && enemeyArray[i, o] != null)
+                    {
+                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                    }
+                    if (i == hero.X_coordinate && o == hero.Y_coordinate - 1 && enemeyArray[i, o] != null)
+                    {
+                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                    }
+                    if (i == hero.X_coordinate + 1 && o == hero.Y_coordinate + 1 && enemeyArray[i, o] != null)
+                    {
+                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                    }
+                    if (i == hero.X_coordinate + 1 && o == hero.Y_coordinate - 1 && enemeyArray[i, o] != null)
+                    {
+                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                    }
+                    if (i == hero.X_coordinate - 1 && o == hero.Y_coordinate + 1 && enemeyArray[i, o] != null)
+                    {
+                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                    }
+                    if (i == hero.X_coordinate - 1 && o == hero.Y_coordinate - 1 && enemeyArray[i, o] != null)
+                    {
+                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+
+                    }
+                }
+            }
+
         }
 
         /// <summary>
