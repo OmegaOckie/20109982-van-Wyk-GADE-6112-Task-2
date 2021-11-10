@@ -24,17 +24,41 @@ namespace _20109982_van_Wyk_POE
             switch (direction)
             {
                 case Character.Movement.UP:
+                    //if (myMap.GetItemAtPosition(x-1, y)
+                    //{
+                    //    myMap.GetItemAtPosition(x, y);
+                    //}
+                    return true;
                     break;
                 case Character.Movement.DOWN:
+
+                    return true;
                     break;
                 case Character.Movement.LEFT:
+
+                    return true;
                     break;
                 case Character.Movement.RIGHT:
+
+                    return true;
                     break;
                 default:
                     return false;
                     break;
             }
+        }
+
+        private void EnemyAttacks()
+        {
+            foreach (var enemy in myMap.EnemyArray)
+            {
+
+            }
+        }
+
+        private void MoveEnemeies()
+        {
+
         }
     }
 }
