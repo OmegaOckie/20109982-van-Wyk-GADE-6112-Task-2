@@ -50,10 +50,11 @@ namespace _20109982_van_Wyk_POE
 
         public override string ToString()
         {
-            return "$Player Stats:" +
-                "\n HP:{HP}/{MaxHP}" +
+            return "Player Stats:" +
+                "\n HP:" + HP + "/" + MaxHP +
+                "\n Gold Amount: " + characterGoldPurse +
                 "\n Damage: 2" +
-                "\n [{x},{y}]";
+                "\n [" + x + ", " + y + "]";
         }
     }
 }

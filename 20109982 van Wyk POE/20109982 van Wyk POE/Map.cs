@@ -18,6 +18,7 @@ namespace _20109982_van_Wyk_POE
         protected int mapWidth { get; set; }
         protected int mapHeight { get; set; }
         protected Random rng { get; set; }
+        protected Item[,] itemArray { get; set; }
 
             /// <summary>
             /// Q.3.2 | A constructor that receives a minimum and maximum width, minimum and
@@ -28,7 +29,7 @@ namespace _20109982_van_Wyk_POE
             /// <param name="minHeight"></param>
             /// <param name="maxHeight"></param>
             /// <param name="numOfEnemies"></param>
-            public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int numOfEnemies)
+            public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int numOfEnemies, int amountOfGold)
         {
             //Q.3.2 | The method randoms a height
             //and width for the map based on the minimum and maximum values
@@ -53,6 +54,11 @@ namespace _20109982_van_Wyk_POE
                 Create(Tile.TileType.ENEMY);
             }
 
+            foreach (var item in itemArray)
+            {
+                Create(Tile.TileType.GOLD);
+            }
+
             //Q.3.2 | It then calls UpdateVision() which updates the vision
             //arrays of each Character with the Tiles around the character.
             UpdateVision();
@@ -72,37 +78,37 @@ namespace _20109982_van_Wyk_POE
             {
                 for (int o = 0; o < mapHeight; o++)
                 {
-                    if (i == myHero.xCoordinate + 1 && o == myHero.yCoordinate && enemyArray[i, o] != null)
+                    if (i == myHero.xCoordinate + 1 && o == myHero.yCoordinate && mapArray[i, o] != null)
                     {
-                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                        rtb.Text += mapArray[i, o].ToString() + "\n";
                     }
-                    if (i == hero.X_coordinate - 1 && o == hero.Y_coordinate && enemeyArray[i, o] != null)
+                    if (i == myHero.xCoordinate - 1 && o == myHero.yCoordinate && mapArray[i, o] != null)
                     {
-                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                        rtb.Text += mapArray[i, o].ToString() + "\n";
                     }
-                    if (i == hero.X_coordinate && o == hero.Y_coordinate + 1 && enemeyArray[i, o] != null)
+                    if (i == myHero.xCoordinate && o == myHero.yCoordinate + 1 && mapArray[i, o] != null)
                     {
-                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                        rtb.Text += mapArray[i, o].ToString() + "\n";
                     }
-                    if (i == hero.X_coordinate && o == hero.Y_coordinate - 1 && enemeyArray[i, o] != null)
+                    if (i == myHero.xCoordinate && o == myHero.yCoordinate - 1 && mapArray[i, o] != null)
                     {
-                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                        rtb.Text += mapArray[i, o].ToString() + "\n";
                     }
-                    if (i == hero.X_coordinate + 1 && o == hero.Y_coordinate + 1 && enemeyArray[i, o] != null)
+                    if (i == myHero.xCoordinate + 1 && o == myHero.yCoordinate + 1 && mapArray[i, o] != null)
                     {
-                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                        rtb.Text += mapArray[i, o].ToString() + "\n";
                     }
-                    if (i == hero.X_coordinate + 1 && o == hero.Y_coordinate - 1 && enemeyArray[i, o] != null)
+                    if (i == myHero.xCoordinate + 1 && o == myHero.yCoordinate - 1 && mapArray[i, o] != null)
                     {
-                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                        rtb.Text += mapArray[i, o].ToString() + "\n";
                     }
-                    if (i == hero.X_coordinate - 1 && o == hero.Y_coordinate + 1 && enemeyArray[i, o] != null)
+                    if (i == myHero.xCoordinate - 1 && o == myHero.yCoordinate + 1 && mapArray[i, o] != null)
                     {
-                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                        rtb.Text += mapArray[i, o].ToString() + "\n";
                     }
-                    if (i == hero.X_coordinate - 1 && o == hero.Y_coordinate - 1 && enemeyArray[i, o] != null)
+                    if (i == myHero.xCoordinate - 1 && o == myHero.yCoordinate - 1 && mapArray[i, o] != null)
                     {
-                        rtb.Text += enemeyArray[i, o].ToString() + "\n";
+                        rtb.Text += mapArray[i, o].ToString() + "\n";
 
                     }
                 }
@@ -126,6 +132,10 @@ namespace _20109982_van_Wyk_POE
             int xPos = rng.Next(mapWidth);
             int yPos = rng.Next(mapHeight);
 
+            //generates a random enemy
+            Random randomEnemy = new Random();
+            int chosenEnemy = randomEnemy.Next(1, 3);
+
             int numOfEnemies = 0;
 
             switch (type)
@@ -136,14 +146,38 @@ namespace _20109982_van_Wyk_POE
                 case Tile.TileType.ENEMY:
                     mapArray[xPos, yPos] = enemyArray[numOfEnemies];
                     numOfEnemies++;
+                    if (chosenEnemy == 1)
+                    {
+                        return enemyArray[numOfEnemies] = new Goblin(xPos, yPos);
+                    }
                     break;
                 case Tile.TileType.GOLD:
+                    return itemArray[xPos, yPos] = new Gold(xPos, yPos);
                     break;
                 case Tile.TileType.WEAPON:
                     break;
                 default:
                     break;
             }
+            return null;
+        }
+
+        public Item GetItemAtPosition(int x, int y)
+        {
+            if (itemArray[x, y] != null)
+            {
+                for (int i = 0; i < mapWidth; i++)
+                {
+                    for (int o = 0; o < mapHeight; o++)
+                    {
+                        if (itemArray[i, o] != null)
+                        {
+                            return itemArray[i, o];
+                        }
+                    }
+                }
+            }
+            return null;
         }
     }
 }

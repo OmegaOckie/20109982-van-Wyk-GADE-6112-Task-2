@@ -16,6 +16,8 @@ namespace _20109982_van_Wyk_POE
 
         protected Tile[] characterVision;// = new Tile[4];
 
+        protected int characterGoldPurse { get; set; }
+
         public enum Movement
         {
             NONE,
@@ -152,6 +154,17 @@ namespace _20109982_van_Wyk_POE
                     break;
                 default:
                     //No movement
+                    break;
+            }
+        }
+
+        public void Pickup(Item i)
+        {
+            switch (i)
+            {
+                case :
+
+                default:
                     break;
             }
         }

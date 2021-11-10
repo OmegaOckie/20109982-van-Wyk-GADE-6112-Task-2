@@ -12,10 +12,10 @@ namespace _20109982_van_Wyk_POE
         //Q.3.3 | Declare variables
         private Map myMap {get; set;}
 
-        public GameEngine(int inputMapMinWidth, int inputMapMaxWidth, int inputMapMinHeight, int inputMapMaxHeight)
+        public GameEngine(int inputMapMinWidth, int inputMapMaxWidth, int inputMapMinHeight, int inputMapMaxHeight, int amountOfGold)
         {
             //Creates a Map object with hardcoded amount of enemies
-            myMap = new Map(inputMapMinWidth, inputMapMaxWidth, inputMapMinHeight, inputMapMaxHeight, 5);
+            myMap = new Map(inputMapMinWidth, inputMapMaxWidth, inputMapMinHeight, inputMapMaxHeight, 5, amountOfGold);
         }
 
         public bool MovePlayer(Character.Movement direction)
