@@ -15,6 +15,7 @@ namespace _20109982_van_Wyk_POE
         protected Tile[,] mapArray { get; set; }
         protected Hero myHero { get; set; }
         protected Enemy[] enemyArray { get; set; }
+        public Enemy[] EnemyArray { get => enemyArray; set => enemyArray = value; }
         protected int mapWidth { get; set; }
         protected int mapHeight { get; set; }
         protected Random rng { get; set; }

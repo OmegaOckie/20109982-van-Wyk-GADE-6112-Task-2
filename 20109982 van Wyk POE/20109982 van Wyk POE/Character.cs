@@ -162,8 +162,10 @@ namespace _20109982_van_Wyk_POE
         {
             switch (i)
             {
-                case :
-
+                //case :
+                //    Gold myGold = new Gold(xPos, yPos);
+                 //   characterGoldPurse = myGold.getAmountOfGold;
+                //    break;
                 default:
                     break;
             }
